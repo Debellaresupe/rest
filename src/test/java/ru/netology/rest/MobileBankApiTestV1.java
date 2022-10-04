@@ -8,16 +8,17 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 class MobileBankApiTestV1 {
     @Test
     void shouldMatchTheSchema() {
-      // Given - When - Then
-      // Предусловия
-      given()
-          .baseUri("http://localhost:9999/api/v1")
-      // Выполняемые действия
-      .when()
-          .get("/demo/accounts")
-      // Проверки
-      .then()
-              // static import для JsonSchemaValidator.matchesJsonSchemaInClasspath
-              .body(matchesJsonSchemaInClasspath("accounts.schema.json"));
+        // Given - When - Then
+        // Предусловия
+        given()
+                .baseUri("http://localhost:9999/api/v1")
+                // Выполняемые действия
+                .when()
+                .get("/demo/accounts")
+                // Проверки
+                .then()
+                .statusCode(200)
+                .body(matchesJsonSchemaInClasspath("accounts.schema.json"))
+        ;
     }
 }
