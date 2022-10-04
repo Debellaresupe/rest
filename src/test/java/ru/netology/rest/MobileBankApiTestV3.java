@@ -9,22 +9,20 @@ import static org.hamcrest.Matchers.*;
 
 class MobileBankApiTestV3 {
     @Test
-    void shouldReturnDemoAccounts() {
+    void shouldBeRubCurrency() {
       // Given - When - Then
       // Предусловия
-      given()
-          .baseUri("http://localhost:9999/api/v1")
-      // Выполняемые действия
-      .when()
-          .get("/demo/accounts")
-      // Проверки
-      .then()
-          .statusCode(200)
-          // специализированные проверки - лучше
-          .contentType(ContentType.JSON)
-          .body("", hasSize(3))
-          .body("[0].currency", equalTo("RUB"))
-          .body("[0].balance", greaterThanOrEqualTo(0))
+        // Выполняемые действия
+        // Проверки
+        // специализированные проверки - лучше
+        given()
+            .baseUri("http://localhost:9999/api/v1")
+        // Выполняемые действия
+        .when()
+            .get("/demo/accounts")
+        // Проверки
+        .then()
+            .body("[0].currency", equalTo("RUB"))
       ;
     }
 }
